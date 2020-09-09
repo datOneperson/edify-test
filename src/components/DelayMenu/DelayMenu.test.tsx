@@ -12,10 +12,10 @@ test("renders delay menu", async () => {
   expect(buttonElement).toBeDefined();
 
   expect(getByLabelText(/0/i)).toBeInTheDocument();
-  
+
   const checkedElement = getByLabelText(/1 sec/i);
   expect(checkedElement).toBeInTheDocument();
   expect(checkedElement).toHaveAttribute("checked");
-  
+
   expect(getByLabelText(/2 secs/i)).toBeInTheDocument();
 });

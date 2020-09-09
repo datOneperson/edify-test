@@ -18,9 +18,13 @@ export default ({ data, view }: ListProps) => {
   return (
     <List>
       {data.map((organization, key) => (
-        <ListItem button onClick={() => {
-          history.push("/" + organization.login);
-        }} key={key}>
+        <ListItem
+          button
+          onClick={() => {
+            history.push("/" + organization.login);
+          }}
+          key={key}
+        >
           <ListItemAvatar>
             <Avatar alt={organization.login} src={organization.avatar_url} />
           </ListItemAvatar>
