@@ -42,10 +42,12 @@ function App() {
   const [view, setView] = useState<"list" | "detail">("list");
   const [data, setData] = useState<OrganizationProps[]>([]);
   const [filter, setFilter] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     // Clear data to show "refresh" is happening
     setData([]);
+    setLoading(true);
 
     // Simulate the delay from the requirements
     setTimeout(async () => {
@@ -58,6 +60,8 @@ function App() {
       } catch {
         setData([]);
       }
+
+      setLoading(false);
     }, delay * 1000);
   }, [delay]);
 
@@ -90,12 +94,14 @@ function App() {
               <ViewOptions view={view} updateView={setView} />
             </Grid>
 
-            <List
-              data={data.filter((organization) =>
-                organization.login.includes(filter)
-              )}
-              view={view}
-            />
+            {loading ? 'Loading...' : (
+              <List
+                data={data.filter((organization) =>
+                  organization.login.includes(filter)
+                )}
+                view={view}
+              />
+            )}
           </Route>
           <Route path="/:login">
             <Detail

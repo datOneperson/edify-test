@@ -27,7 +27,7 @@ interface OrganizationDetailProps {
 
 export default ({ delay, organization }: DetailProps) => {
   if (!organization) {
-    return null;
+    return <p>Loading...</p>;
   }
 
   const [data, setData] = useState<OrganizationDetailProps>();
@@ -86,7 +86,7 @@ export default ({ delay, organization }: DetailProps) => {
             </ul>
           </CardContent>
         </Card>
-      ) : null}
+      ) : 'Loading...'}
     </>
   );
 };
