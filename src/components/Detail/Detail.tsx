@@ -9,12 +9,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
-import StarIcon from '@material-ui/icons/Star';
+import StarIcon from "@material-ui/icons/Star";
 import { List } from "@material-ui/core";
 
 interface DetailProps {
-  addFavorite: (favorite: OrganizationProps) => void
-  isFavorite: boolean
+  addFavorite: (favorite: OrganizationProps) => void;
+  isFavorite: boolean;
   delay: 0 | 1 | 2;
   organization?: OrganizationProps;
 }
@@ -31,7 +31,12 @@ interface OrganizationDetailProps {
   public_gists: number;
 }
 
-export default ({ addFavorite, isFavorite, delay, organization }: DetailProps) => {
+export default ({
+  addFavorite,
+  isFavorite,
+  delay,
+  organization,
+}: DetailProps) => {
   if (!organization) {
     return <p>Loading...</p>;
   }
@@ -52,43 +57,40 @@ export default ({ addFavorite, isFavorite, delay, organization }: DetailProps) =
 
   return (
     <>
-    <List>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar alt={organization.login} src={organization.avatar_url} />
-        </ListItemAvatar>
+      <List>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar alt={organization.login} src={organization.avatar_url} />
+          </ListItemAvatar>
 
-        <ListItemText
-          primary={organization.login}
-          secondary={
-            <>
-              <a
-                href={organization.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {organization.url}
-              </a>
-              <br />
-              <span>{organization.description}</span>
-            </>
-          }
-        />
+          <ListItemText
+            primary={organization.login}
+            secondary={
+              <>
+                <a
+                  href={organization.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {organization.url}
+                </a>
+                <br />
+                <span>{organization.description}</span>
+              </>
+            }
+          />
 
-<ListItemSecondaryAction onClick={() => addFavorite(organization)}>
-                    <IconButton edge="end">
-                      <StarIcon htmlColor={isFavorite ? 'gold' : 'inherit'} />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-
-      </ListItem>
-    </List>
+          <ListItemSecondaryAction onClick={() => addFavorite(organization)}>
+            <IconButton edge="end">
+              <StarIcon htmlColor={isFavorite ? "gold" : "inherit"} />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+      </List>
       {data ? (
         <Card>
           <CardContent>
-            <Typography variant="h2">
-              {data.name}
-            </Typography>
+            <Typography variant="h2">{data.name}</Typography>
             <Typography color="textSecondary" gutterBottom>
               {data.location}
             </Typography>
@@ -99,7 +101,9 @@ export default ({ addFavorite, isFavorite, delay, organization }: DetailProps) =
             </ul>
           </CardContent>
         </Card>
-      ) : 'Loading...'}
+      ) : (
+        "Loading..."
+      )}
     </>
   );
 };

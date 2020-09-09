@@ -25,14 +25,18 @@ export interface OrganizationProps {
 function App() {
   const classes = useStyles();
   const match = useRouteMatch<{ login: "" }>("/:login");
-  const favoritesFromLocalStorage = JSON.parse(window.localStorage.getItem('favorites') || '[]') as OrganizationProps[];
+  const favoritesFromLocalStorage = JSON.parse(
+    window.localStorage.getItem("favorites") || "[]"
+  ) as OrganizationProps[];
 
   const [delay, setDelay] = useState<0 | 1 | 2>(0);
   const [view, setView] = useState<"list" | "detail">("list");
   const [data, setData] = useState<OrganizationProps[]>([]);
   const [filter, setFilter] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
-  const [favorites, setFavorites] = useState<OrganizationProps[]>(favoritesFromLocalStorage)
+  const [favorites, setFavorites] = useState<OrganizationProps[]>(
+    favoritesFromLocalStorage
+  );
 
   useEffect(() => {
     // Clear data to show "refresh" is happening
@@ -75,7 +79,9 @@ function App() {
               <ViewOptions view={view} updateView={setView} />
             </Grid>
 
-            {loading ? <p>Loading...</p> : (
+            {loading ? (
+              <p>Loading...</p>
+            ) : (
               <List
                 data={data.filter((organization) =>
                   organization.login.includes(filter)
@@ -90,16 +96,20 @@ function App() {
               organization={data.find(
                 (organization) => organization.login === match?.params.login
               )}
-              addFavorite={favorite => {
-                const newFavorites = [
-                  ...favorites,
-                  favorite
-                ];
+              addFavorite={(favorite) => {
+                const newFavorites = [...favorites, favorite];
 
                 setFavorites(newFavorites);
-                window.localStorage.setItem('favorites', JSON.stringify(newFavorites));
+                window.localStorage.setItem(
+                  "favorites",
+                  JSON.stringify(newFavorites)
+                );
               }}
-              isFavorite={!!favorites.find(favorite => favorite.login === match?.params.login)}
+              isFavorite={
+                !!favorites.find(
+                  (favorite) => favorite.login === match?.params.login
+                )
+              }
             />
           </Route>
         </Switch>

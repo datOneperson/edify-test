@@ -9,7 +9,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 const useStyles = makeStyles((theme) => ({
   menu: {
     marginLeft: theme.spacing(2),
-    whiteSpace: 'nowrap'
+    whiteSpace: "nowrap",
   },
 }));
 
