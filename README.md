@@ -1,3 +1,5 @@
+First you need npm installed, version 12 LTS. [npm.org/download](https://npm.org/download)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
