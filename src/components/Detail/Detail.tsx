@@ -7,8 +7,14 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import StarIcon from '@material-ui/icons/Star';
+import { List } from "@material-ui/core";
 
 interface DetailProps {
+  addFavorite: (favorite: OrganizationProps) => void
+  isFavorite: boolean
   delay: 0 | 1 | 2;
   organization?: OrganizationProps;
 }
@@ -25,7 +31,7 @@ interface OrganizationDetailProps {
   public_gists: number;
 }
 
-export default ({ delay, organization }: DetailProps) => {
+export default ({ addFavorite, isFavorite, delay, organization }: DetailProps) => {
   if (!organization) {
     return <p>Loading...</p>;
   }
@@ -40,14 +46,13 @@ export default ({ delay, organization }: DetailProps) => {
         "https://api.github.com/orgs/" + organization.login
       );
 
-      const org = await response.json();
-
-      setData(org);
+      setData(await response.json());
     }, delay * 1000);
   }, [delay, organization]);
 
   return (
     <>
+    <List>
       <ListItem>
         <ListItemAvatar>
           <Avatar alt={organization.login} src={organization.avatar_url} />
@@ -69,7 +74,15 @@ export default ({ delay, organization }: DetailProps) => {
             </>
           }
         />
+
+<ListItemSecondaryAction onClick={() => addFavorite(organization)}>
+                    <IconButton edge="end">
+                      <StarIcon htmlColor={isFavorite ? 'gold' : 'inherit'} />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+
       </ListItem>
+    </List>
       {data ? (
         <Card>
           <CardContent>
