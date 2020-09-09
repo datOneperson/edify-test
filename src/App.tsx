@@ -39,11 +39,15 @@ function App() {
 
     // Simulate the delay from the requirements
     setTimeout(async () => {
-      const response = await fetch("https://api.github.com/organizations");
+      try {
+        const response = await fetch("https://api.github.com/organizations");
 
-      const data = await response.json();
-
-      setData(data);
+        const data = await response.json();
+  
+        setData(data);
+      } catch {
+        setData([]);
+      }
     }, delay * 1000);
   }, [delay]);
 
