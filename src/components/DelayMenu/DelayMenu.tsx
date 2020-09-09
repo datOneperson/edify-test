@@ -1,38 +1,64 @@
-import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+
+const useStyles = makeStyles((theme) => ({
+  menu: {
+    marginLeft: theme.spacing(2),
+  },
+}));
 
 interface DelayMenuProps {
-    delay: 0 | 1 | 2
-    updateDelay: (delay: 0 | 1 | 2) => void
+  delay: 0 | 1 | 2;
+  updateDelay: (delay: 0 | 1 | 2) => void;
 }
 
-export default ({delay, updateDelay}: DelayMenuProps) => {
-    const [anchorEl, setAnchorEl] = useState<EventTarget & Element | null>(null);
-  
-    const handleClick = (event: React.MouseEvent) => {
-      setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-    return (
-        <div>
-        <Button onClick={handleClick}>Open Menu</Button>
-        <Menu
+export default ({ delay, updateDelay }: DelayMenuProps) => {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState<(EventTarget & Element) | null>(
+    null
+  );
+
+  const handleClick = (event: React.MouseEvent) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateDelay(1);
+  };
+
+  return (
+    <div>
+      <Button color="inherit" onClick={handleClick}>
+        Delay
+      </Button>
+      <Menu
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+      >
+        <RadioGroup
+          row
+          className={classes.menu}
+          name="quiz"
+          value={delay}
+          onChange={handleRadioChange}
         >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Menu>
-        </div>
-    )
-}
+          <FormControlLabel value={0} control={<Radio />} label="0" />
+          <FormControlLabel value={1} control={<Radio />} label="1 sec" />
+          <FormControlLabel value={2} control={<Radio />} label="2 secs" />
+        </RadioGroup>
+      </Menu>
+    </div>
+  );
+};

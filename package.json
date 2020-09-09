@@ -48,6 +48,6 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,css,md}": "prettier --write"
+    "src/**/*.{ts,tsx,css,md}": "prettier --write"
   }
 }
