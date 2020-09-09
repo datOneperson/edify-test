@@ -6,11 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import DelayMenu from "./components/DelayMenu/DelayMenu";
 import ViewOptions from "./components/ViewOptions/ViewOptions";
 import Container from "@material-ui/core/Container";
+import List from "./components/List/List";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -18,30 +16,35 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   container: {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 }));
 
-interface OrganizationProps {
-  login: string
-  avatar_url: string
-  description: string
+export interface OrganizationProps {
+  login: string;
+  avatar_url: string;
+  description: string;
+  url: string;
 }
 
 function App() {
   const classes = useStyles();
   const [delay, setDelay] = useState<0 | 1 | 2>(0);
-  const [view, setView] = useState<'list' | 'detail'>('list');
-  const [data, setData] = useState<OrganizationProps[]>([])
+  const [view, setView] = useState<"list" | "detail">("list");
+  const [data, setData] = useState<OrganizationProps[]>([]);
 
   useEffect(() => {
+    // Clear data to show "refresh" is happening
+    setData([]);
+
+    // Simulate the delay from the requirements
     setTimeout(async () => {
       const response = await fetch("https://api.github.com/organizations");
 
       const data = await response.json();
 
       setData(data);
-    }, delay * 1000)
+    }, delay * 1000);
   }, [delay]);
 
   return (
@@ -62,12 +65,8 @@ function App() {
 
       <Container className={classes.container}>
         <ViewOptions view={view} updateView={setView} />
-        
-        <ul>
-        {data.map((organization => (
-          <li>{organization.login}</li>
-        )))}
-        </ul>
+
+        <List data={data} view={view} />
       </Container>
     </div>
   );

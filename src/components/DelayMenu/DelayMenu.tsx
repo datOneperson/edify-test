@@ -32,12 +32,12 @@ export default ({ delay, updateDelay }: DelayMenuProps) => {
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value === '0') {
-        updateDelay(0)
-    } else if (event.target.value === '1') {
-        updateDelay(1)
-    } else if (event.target.value === '2') {
-        updateDelay(2)
+    if (event.target.value === "0") {
+      updateDelay(0);
+    } else if (event.target.value === "1") {
+      updateDelay(1);
+    } else if (event.target.value === "2") {
+      updateDelay(2);
     }
   };
 
