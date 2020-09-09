@@ -80,11 +80,15 @@ export default ({
             }
           />
 
-          <ListItemSecondaryAction onClick={() => addFavorite(organization)}>
-            <IconButton edge="end">
-              <StarIcon htmlColor={isFavorite ? "gold" : "inherit"} />
-            </IconButton>
-          </ListItemSecondaryAction>
+          {isFavorite ? (
+            <StarIcon htmlColor="gold" />
+          ) : (
+            <ListItemSecondaryAction onClick={() => addFavorite(organization)}>
+              <IconButton edge="end">
+                <StarIcon htmlColor="inherit" />
+              </IconButton>
+            </ListItemSecondaryAction>
+          )}
         </ListItem>
       </List>
       {data ? (
