@@ -1,4 +1,9 @@
-First you need npm installed, version 12 LTS. [npm.org/download](https://npm.org/download)
+# Edify Test
+
+1. First you need npm installed, version 12 LTS. [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+2. Next clone this repo
+3. Now run `npm install`
+4. And then run `npm start`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
