@@ -9,6 +9,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 const useStyles = makeStyles((theme) => ({
   menu: {
     marginLeft: theme.spacing(2),
+    whiteSpace: 'nowrap'
   },
 }));
 
@@ -55,7 +56,6 @@ export default ({ delay, updateDelay }: DelayMenuProps) => {
         onClose={handleClose}
       >
         <RadioGroup
-          row
           className={classes.menu}
           name="quiz"
           value={delay}

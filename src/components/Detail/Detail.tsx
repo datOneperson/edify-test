@@ -44,7 +44,7 @@ export default ({ delay, organization }: DetailProps) => {
 
       setData(org);
     }, delay * 1000);
-  }, []);
+  }, [delay, organization]);
 
   return (
     <>
@@ -73,7 +73,7 @@ export default ({ delay, organization }: DetailProps) => {
       {data ? (
         <Card>
           <CardContent>
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h2">
               {data.name}
             </Typography>
             <Typography color="textSecondary" gutterBottom>

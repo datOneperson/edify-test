@@ -11,7 +11,6 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { Switch, Route, useRouteMatch, NavLink } from "react-router-dom";
 import Detail from "./components/Detail/Detail";
-import { Link } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
