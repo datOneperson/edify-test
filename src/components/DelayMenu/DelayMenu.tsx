@@ -1,20 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
 
 interface DelayMenuProps {
     delay: 0 | 1 | 2
-    updateDelay: () => {}
+    updateDelay: (delay: 0 | 1 | 2) => void
 }
 
 export default ({delay, updateDelay}: DelayMenuProps) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
+    const [anchorEl, setAnchorEl] = useState<EventTarget & Element | null>(null);
   
-    const handleClick = (event: any) => {
-        debugger;
+    const handleClick = (event: React.MouseEvent) => {
       setAnchorEl(event.currentTarget);
     };
   

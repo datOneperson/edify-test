@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import DelayMenu from './components/DelayMenu/DelayMenu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,9 +28,11 @@ function App() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            News
+            Edify test
           </Typography>
-          <Button color="inherit">Login</Button>
+          <DelayMenu delay={delay} updateDelay={(delay: 0 | 1 | 2) => {
+            setDelay(delay)
+          }} />
         </Toolbar>
       </AppBar>
     </div>
