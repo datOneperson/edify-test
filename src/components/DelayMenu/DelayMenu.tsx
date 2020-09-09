@@ -61,7 +61,7 @@ export default ({ delay, updateDelay }: DelayMenuProps) => {
           value={delay}
           onChange={handleRadioChange}
         >
-          <FormControlLabel value={0} control={<Radio />} label="0 sec" />
+          <FormControlLabel value={0} control={<Radio />} label="0" />
           <FormControlLabel value={1} control={<Radio />} label="1 sec" />
           <FormControlLabel value={2} control={<Radio />} label="2 secs" />
         </RadioGroup>

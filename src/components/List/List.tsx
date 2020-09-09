@@ -5,6 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import { OrganizationProps } from "../../App";
+import { useHistory } from "react-router-dom";
 
 interface ListProps {
   data: OrganizationProps[];
@@ -12,10 +13,14 @@ interface ListProps {
 }
 
 export default ({ data, view }: ListProps) => {
+  const history = useHistory();
+
   return (
     <List>
       {data.map((organization, key) => (
-        <ListItem key={key}>
+        <ListItem button onClick={() => {
+          history.push("/" + organization.login);
+        }} key={key}>
           <ListItemAvatar>
             <Avatar alt={organization.login} src={organization.avatar_url} />
           </ListItemAvatar>
