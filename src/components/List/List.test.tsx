@@ -5,8 +5,8 @@ import { OrganizationProps } from "../../App";
 
 test("renders list for list view", () => {
   const data: OrganizationProps[] = [
-      {url: "", avatar_url: "", login: "testing", description: ""}
-  ]
+    { url: "", avatar_url: "", login: "testing", description: "" },
+  ];
 
   const { getByText } = render(<List data={data} view="list" />);
 
@@ -14,12 +14,17 @@ test("renders list for list view", () => {
 });
 
 test("renders list for detail view", () => {
-    const data: OrganizationProps[] = [
-        {url: "", avatar_url: "", login: "testing", description: "details are here"}
-    ]
+  const data: OrganizationProps[] = [
+    {
+      url: "",
+      avatar_url: "",
+      login: "testing",
+      description: "details are here",
+    },
+  ];
 
-    const { getByText } = render(<List data={data} view="detail" />);
+  const { getByText } = render(<List data={data} view="detail" />);
 
-    expect(getByText(/testing/i)).toBeInTheDocument();
-    expect(getByText(/details are here/i)).toBeInTheDocument();
+  expect(getByText(/testing/i)).toBeInTheDocument();
+  expect(getByText(/details are here/i)).toBeInTheDocument();
 });

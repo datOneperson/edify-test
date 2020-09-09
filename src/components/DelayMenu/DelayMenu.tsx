@@ -22,7 +22,7 @@ export default ({ delay, updateDelay }: DelayMenuProps) => {
   const [anchorEl, setAnchorEl] = useState<(EventTarget & Element) | null>(
     null
   );
-  const open = Boolean(anchorEl)
+  const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent) => {
     setAnchorEl(event.currentTarget);
@@ -48,26 +48,25 @@ export default ({ delay, updateDelay }: DelayMenuProps) => {
         Delay
       </Button>
       {open ? (
-      <Menu
-      id="simple-menu"
-      anchorEl={anchorEl}
-      keepMounted
-      open={open}
-      onClose={handleClose}
-    >
-      <RadioGroup
-        row
-        className={classes.menu}
-        name="quiz"
-        value={delay}
-        onChange={handleRadioChange}
-      >
-        <FormControlLabel value={0} control={<Radio />} label="0" />
-        <FormControlLabel value={1} control={<Radio />} label="1 sec" />
-        <FormControlLabel value={2} control={<Radio />} label="2 secs" />
-      </RadioGroup>
-    </Menu>
-
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={open}
+          onClose={handleClose}
+        >
+          <RadioGroup
+            row
+            className={classes.menu}
+            name="quiz"
+            value={delay}
+            onChange={handleRadioChange}
+          >
+            <FormControlLabel value={0} control={<Radio />} label="0" />
+            <FormControlLabel value={1} control={<Radio />} label="1 sec" />
+            <FormControlLabel value={2} control={<Radio />} label="2 secs" />
+          </RadioGroup>
+        </Menu>
       ) : null}
     </div>
   );
