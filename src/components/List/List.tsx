@@ -12,6 +12,7 @@ interface ListProps {
   view: "list" | "detail";
 }
 
+// Load the list of organizations
 export default ({ data, view }: ListProps) => {
   const history = useHistory();
 

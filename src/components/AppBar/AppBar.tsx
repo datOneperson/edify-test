@@ -31,6 +31,7 @@ interface AppBarProps {
   updateDelay: (delay: 0 | 1 | 2) => void;
 }
 
+// This is mainly for the favorite list but includes the app bar and the delay option
 export default ({ children, favorites, delay, updateDelay }: AppBarProps) => {
   const classes = useStyles();
   const [open, setOpen] = useState<boolean>(false);

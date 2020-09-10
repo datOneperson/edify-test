@@ -29,6 +29,7 @@ function App() {
     window.localStorage.getItem("favorites") || "[]"
   ) as OrganizationProps[];
 
+  // Setup application state
   const [delay, setDelay] = useState<0 | 1 | 2>(0);
   const [view, setView] = useState<"list" | "detail">("list");
   const [data, setData] = useState<OrganizationProps[]>([]);
@@ -64,7 +65,9 @@ function App() {
       </AppBar>
 
       <Container className={classes.container}>
+        {/* React router switch according to url path */}
         <Switch>
+          {/* Load filter page on home page */}
           <Route exact path="/">
             <Grid container direction="row" justify="space-between">
               <TextField
@@ -90,6 +93,8 @@ function App() {
               />
             )}
           </Route>
+
+          {/* Load the detail page when passing the org login */}
           <Route path="/:login">
             <Detail
               delay={delay}

@@ -18,6 +18,7 @@ interface DelayMenuProps {
   updateDelay: (delay: 0 | 1 | 2) => void;
 }
 
+// This is the dropdown/menu for the delay option
 export default ({ delay, updateDelay }: DelayMenuProps) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<(EventTarget & Element) | null>(

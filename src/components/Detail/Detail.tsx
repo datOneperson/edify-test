@@ -31,6 +31,8 @@ interface OrganizationDetailProps {
   public_gists: number;
 }
 
+// This is the detail page which shows additional details from the list
+// of organizations
 export default ({
   addFavorite,
   isFavorite,
@@ -46,6 +48,7 @@ export default ({
   useEffect(() => {
     setData(undefined);
 
+    // Use the delay from the app state and fetch more org info
     setTimeout(async () => {
       const response = await fetch(
         "https://api.github.com/orgs/" + organization.login
@@ -57,6 +60,7 @@ export default ({
 
   return (
     <>
+      {/* This list item section is supposed to mimic the view from the list. Its a little different component wise. */}
       <List>
         <ListItem>
           <ListItemAvatar>
@@ -91,6 +95,7 @@ export default ({
           )}
         </ListItem>
       </List>
+      {/* This is the additional detail section */}
       {data ? (
         <Card>
           <CardContent>

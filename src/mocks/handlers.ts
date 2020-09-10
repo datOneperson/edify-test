@@ -1,5 +1,6 @@
 import { rest } from "msw";
 
+// Mock fetch requests in tests
 export const handlers = [
   rest.get("https://api.github.com/organizations", (request, response, ctx) => {
     return response(

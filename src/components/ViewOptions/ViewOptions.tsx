@@ -9,6 +9,8 @@ interface ViewOptionsProps {
   updateView: (view: "list" | "detail") => void;
 }
 
+// This is toggle view component. I dont think this is needed but
+// its in case the detail view was included in the list view.
 export default ({ view, updateView }: ViewOptionsProps) => {
   return (
     <ButtonGroup color="primary" aria-label="outlined primary button group">
